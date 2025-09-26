@@ -1,1 +1,46 @@
 /* You can add global styles to this file, and also import other style files */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* PrimeNG Styles */
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+@import "primeicons/primeicons.css";
+
+* {
+  font-family: 'Inter', sans-serif;
+}
+
+.p-inputtext:enabled:focus,
+.p-password-input:enabled:focus,
+.p-dropdown:not(.p-disabled).p-focus,
+.p-multiselect:not(.p-disabled).p-focus,
+.p-calendar:not(.p-disabled).p-focus .p-inputtext,
+.p-inputnumber:not(.p-disabled).p-focus .p-inputtext,
+.p-textarea:enabled:focus,
+.p-checkbox:not(.p-disabled):focus .p-checkbox-box,
+.p-radiobutton:not(.p-disabled):focus .p-radiobutton-box {
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: #9CA3AF !important;
+}
+
+.p-password .p-inputtext:enabled:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: #9CA3AF !important;
+}
+
+.p-checkbox .p-checkbox-box:focus,
+.p-checkbox .p-checkbox-box.p-focus,
+.p-checkbox:not(.p-disabled) .p-checkbox-box:focus,
+.p-checkbox:not(.p-disabled) .p-checkbox-box.p-focus,
+.p-checkbox:focus .p-checkbox-box,
+.p-checkbox.p-focus .p-checkbox-box,
+.p-checkbox-box:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: #9CA3AF !important;
+}

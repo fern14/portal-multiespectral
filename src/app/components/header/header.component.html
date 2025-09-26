@@ -1,0 +1,55 @@
+<div class="bg-white px-[30px] py-[14px] rounded-[12px] flex items-center justify-between">
+    <div>
+        <p-inputGroup class="w-[400px]">
+            <img src="../../../assets/imgs/header/Vector.svg" alt="Search" class="p-[14px]" />
+            <input type="text" pInputText placeholder="Pesquisar" class="w-full" />
+        </p-inputGroup>
+    </div>
+    <div class="flex items-center gap-[16px]">
+        <p-calendar [(ngModel)]="rangeDates" selectionMode="range" [readonlyInput]="true" dateFormat="dd/mm/yy"
+            placeholder="Selecionar período" [showIcon]="true" iconDisplay="input" styleClass="custom-calendar"
+            inputStyleClass="bg-gray-50 border-gray-300 rounded-lg px-4 py-2 text-gray-700">
+        </p-calendar>
+        <div>
+            <img src="../../../assets/imgs/header/message-circle-chat.svg" alt="Chat">
+        </div>
+        <div>
+            <img src="../../../assets/imgs/header/bell.svg" alt="Bell">
+        </div>
+        <div class="flex items-center gap-[12px] cursor-pointer hover:bg-gray-50 p-[8px] rounded-lg transition-colors"
+             (click)="onProfileClick($event)">
+            <img src="../../../assets/imgs/Avatar.png" alt="Perfil"
+                 class="w-[48px] h-[48px] rounded-[12px] object-cover border-2 border-gray-200">
+            <div class="flex flex-col">
+                <p class="text-[16px] font-semibold text-gray-800">{{ userName }}</p>
+                <span class="bg-[#5F964B] text-white text-[12px] font-medium px-[12px] py-[4px] rounded-full w-[60px]">
+                    {{ userRole }}
+                </span>
+            </div>
+            <svg class="w-[20px] h-[20px] text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+        </div>
+
+        <!-- Dropdown Menu -->
+        <p-overlayPanel #profileMenu styleClass="profile-dropdown">
+            <div class="p-[8px] min-w-[200px]">
+
+
+                <div class="border-t border-gray-200 pt-[8px]">
+                    <div class="flex items-center gap-[12px] p-[12px] hover:bg-gray-50 rounded-lg cursor-pointer transition-colors"
+                         (click)="onProfileMenuClick()">
+                        <i class="pi pi-user text-gray-600"></i>
+                        <span class="text-[14px] text-gray-800">Perfil</span>
+                    </div>
+
+                    <div class="flex items-center gap-[12px] p-[12px] hover:bg-red-50 rounded-lg cursor-pointer transition-colors text-red-600"
+                         (click)="onLogout()">
+                        <i class="pi pi-sign-out"></i>
+                        <span class="text-[14px]">Sair</span>
+                    </div>
+                </div>
+            </div>
+        </p-overlayPanel>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+<div class="flex h-screen">
+    <aside class="w-[316px] h-screen bg-white flex flex-col">
+        <div class="flex flex-col items-center p-[56px]">
+            <img src="../../../assets/imgs/logo.svg" alt="Logo">
+            <p class="text-[#3A632B] font-bold text-[32px]">AgroScan</p>
+        </div>
+
+        <div class="flex-1 mt-[25px] w-[295px]">
+            <div class="flex items-center gap-[12px] ml-[34px] py-[15px] px-[20px] cursor-pointer bg-[#5F964B1A] border-l-[4px] border-[#5F964B] rounded-[4px]">
+                <img src="../../../assets/imgs/sidebar/grid.svg" alt="Dashboard">
+                <p>Dashboard</p>
+            </div>
+            <div class="flex items-center gap-[12px] ml-[34px] py-[15px] px-[20px] cursor-pointer rounded-[4px]">
+                <img src="../../../assets/imgs/sidebar/crop.svg" alt="Áreas">
+                <p>Áreas</p>
+            </div>
+            <div class="flex items-center gap-[12px] ml-[34px] py-[15px] px-[20px] cursor-pointer rounded-[4px]">
+                <img src="../../../assets/imgs/sidebar/cloud-sun-alt.svg" alt="Tempo">
+                <p>Tempo</p>
+            </div>
+            <div class="flex items-center gap-[12px] ml-[34px] py-[15px] px-[20px] cursor-pointer rounded-[4px]">
+                <img src="../../../assets/imgs/sidebar/gear.svg" alt="Configurações">
+                <p>Configurações</p>
+            </div>
+            <div class="flex items-center gap-[12px] ml-[34px] py-[15px] px-[20px] cursor-pointer rounded-[4px]">
+                <img src="../../../assets/imgs/sidebar/circle-question.svg" alt="Ajuda">
+                <p>Ajuda</p>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-[12px] w-[295px] ml-[34px] mb-[62px] cursor-pointer">
+            <img src="../../../assets/imgs/sidebar/exit.svg" alt="Logout">
+            <p class="text-[#B01212] font-normal text-[14px]">Sair</p>
+        </div>
+    </aside>
+
+    <main class="flex-1 h-screen overflow-auto bg-gray-200 flex flex-col">
+        <div class="p-[14px]">
+            <app-header></app-header>
+        </div>
+        <div class="flex-1 overflow-auto">
+            <router-outlet></router-outlet>
+        </div>
+    </main>
+</div>

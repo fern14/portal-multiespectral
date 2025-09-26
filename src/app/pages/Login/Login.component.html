@@ -1,0 +1,81 @@
+<div class="background-container">
+    <img src="assets/imgs/bg-login.png" alt="Background" class="background-image">
+    <div class="background-overlay"></div>
+</div>
+
+<section class="flex items-center justify-center h-screen gap-[64px] flex-wrap p-8 md:ml-16">
+    <div class="hidden md:flex flex-col gap-[98px] w-[380px]">
+        <h1 class="text-white text-[50px] font-bold">AgroScan</h1>
+        <div class="flex flex-col gap-[24px]">
+            <h1 class="text-white text-[32px] font-bold">Construindo o futuro</h1>
+            <p class="text-white text-[16px]">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi fuga alias nostrum esse vero magni quod aliquid ratione, earum libero ad inventore praesentium laborum enim. Tenetur animi quis totam temporibus?</p>
+        </div>
+        <img src="../../../assets/imgs/logo_mogai.svg" alt="Logo" class="w-[190px] h-[64px]">
+    </div>
+    <div class="h-[639px] w-[496px] bg-white rounded-[24px] p-[40px]">
+        <div class="mt-[40px]">
+            <img src="../../../assets/imgs/logo.svg" alt="Logo">
+            <p class="text-[13px] mt-[16px]">BEM-VINDO</p>
+            <p class="text-[25px] font-medium">Faça login na sua conta</p>
+        </div>
+
+        <div class="mt-[40px] flex flex-col gap-[24px]">
+            <div class="relative">
+                <label for="email" class="absolute -top-2 left-3 bg-white px-2 text-[12px] text-gray-600 font-medium z-10">E-mail</label>
+                <input
+                    pInputText
+                    id="email"
+                    [(ngModel)]="email"
+                    class="w-full h-[56px] px-4 border border-gray-400 rounded-lg text-base"
+                    style="border: 1px solid #9CA3AF; border-radius: 8px;"
+                />
+            </div>
+
+            <div class="relative">
+                <label for="password" class="absolute -top-2 left-3 bg-white px-2 text-[12px] text-gray-600 font-medium z-10">Senha</label>
+                <p-password
+                    id="password"
+                    [(ngModel)]="password"
+                    [feedback]="false"
+                    [toggleMask]="true"
+                    styleClass="w-full"
+                    inputStyleClass="w-full h-[56px] px-4 border border-gray-400 rounded-lg text-base"
+                    [style]="{'width': '100%'}"
+                    [inputStyle]="{'border': '1px solid #9CA3AF', 'border-radius': '8px', 'width': '100%', 'height': '56px'}"
+                ></p-password>
+            </div>
+        </div>
+        <div class="flex items-center justify-between mt-[18px]">
+            <p-checkbox
+                [(ngModel)]="lembrarSenha"
+                label="Lembrar senha"
+                [binary]="true"
+                labelStyleClass="text-[13px] text-[#212121] ml-2"
+            />
+            <p class="text-[13px]">
+                <a href="#" class="text-[#212121]">Esqueceu sua senha?</a>
+            </p>
+        </div>
+
+        <div class="mt-[40px]">
+            <p-button
+                (onClick)="login()"
+                label="ENTRAR"
+                styleClass="w-full"
+                [style]="{
+                    'width': '100%',
+                    'height': '56px',
+                    'background': '#212121',
+                    'background-color': '#212121',
+                    'border': 'none',
+                    'border-radius': '8px',
+                    'color': 'white'
+                }"
+            />
+        </div>
+
+        <div class="mt-[48px] text-center">
+            <p class="text-[#212121]">Novo Usuário? <strong class="underline font-bold cursor-pointer">REGISTRE-SE AQUI</strong></p>
+        </div>
+    </div>
+</section>

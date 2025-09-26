@@ -1,0 +1,137 @@
+<div class="p-[14px] flex justify-between">
+    <div>
+        <p class="font-bold text-[32px]">Bom dia, Jorge!</p>
+        <p class="text-[20px]">Otimize suas operações agrícolas com informações em tempo real.</p>
+
+        <div class="flex gap-[16px] items-center">
+            <div class="w-[320px] h-[250px] mt-[18px] rounded-[12px] bg-gray-100 p-[21px] text-start flex flex-col justify-between">
+                <div>
+                    <p class="font-semibold text-[20px]">Colheita</p>
+                </div>
+                <div>
+                    <div class="flex items-center gap-[18px]">
+                        <p class="font-medium text-[48px]">15%</p>
+                        <img src="../../../assets/imgs/green-arrow.svg" alt="Arrow">
+                    </div>
+                    <p class="text-[#454545] text-[14px]">Comparado com a última semana</p>
+                </div>
+                <div class="flex items-center gap-[6px]">
+                    <p class="text-[#404040] text-[14px]">Ver histórico</p>
+                    <img src="../../../assets/imgs/right-arrow.svg" alt="Arrow">
+                </div>
+            </div>
+            <div class="w-[320px] h-[250px] mt-[18px] rounded-[12px] bg-gray-100 p-[21px] text-start flex flex-col justify-between">
+                <div>
+                    <p class="font-semibold text-[20px]">Plantação perdida</p>
+                </div>
+                <div>
+                    <p class="font-medium text-[48px]">4%</p>
+                    <p class="text-[#454545] text-[14px]">Comparado ao último mês</p>
+                </div>
+                <div class="flex items-center gap-[6px]">
+                    <p class="text-[#404040] text-[14px]">Ver histórico</p>
+                    <img src="../../../assets/imgs/right-arrow.svg" alt="Arrow">
+                </div>
+            </div>
+        </div>
+
+        <div class="flex gap-[16px] items-center">
+            <div class="w-[320px] h-[250px] mt-[18px] rounded-[12px] bg-gray-100 p-[21px] text-start flex flex-col justify-between">
+                <div>
+                    <p class="font-semibold text-[20px]">Colheita estimada</p>
+                </div>
+                <div class="flex flex-col justify-center items-center py-4">
+                    <div class="relative flex flex-col items-center">
+                        <!-- SVG Arc Progress -->
+                        <svg width="300" height="140" viewBox="0 0 300 140">
+                            <!-- Background arc -->
+                            <path
+                                d="M 40 120 A 90 90 0 0 1 240 120"
+                                stroke="#E8F5E8"
+                                stroke-width="12"
+                                fill="none"
+                                stroke-linecap="round"
+                            />
+                            <!-- Progress arc -->
+                            <path
+                                d="M 40 120 A 90 90 0 0 1 240 120"
+                                stroke="#5F964B"
+                                stroke-width="12"
+                                fill="none"
+                                stroke-linecap="round"
+                                [attr.stroke-dasharray]="getArcLength()"
+                                [attr.stroke-dashoffset]="getArcOffset()"
+                                class="transition-all duration-1000 ease-out"
+                            />
+                        </svg>
+                        <!-- Percentage text -->
+                        <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2">
+                            <span class="text-4xl font-bold text-gray-900">{{colheitaPercentual}}%</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-[6px]">
+                        <p class="text-[#404040] text-[14px]">Ver histórico</p>
+                        <img src="../../../assets/imgs/right-arrow.svg" alt="Arrow">
+                    </div>
+                </div>
+            </div>
+            <div class="w-[320px] h-[250px] mt-[18px] rounded-[12px] bg-gray-100 p-[21px] text-start flex flex-col justify-between">
+                <div>
+                    <p class="font-semibold text-[20px]">Últimas colheitas</p>
+                </div>
+
+                <div class="flex flex-col gap-[12px] py-2">
+                    <div *ngFor="let colheita of ultimasColheitas" class="flex items-center gap-2">
+                        <div class="relative h-[32px] rounded-[4px] flex items-center px-4 justify-between transition-all duration-1000"
+                             style="background: linear-gradient(to right, #5F964B, rgba(95, 150, 75, 0));"
+                             [style.width.%]="colheita.percentual">
+
+                            <span class="text-white font-medium text-[12px]">{{colheita.mes}}</span>
+                            <span class="font-medium text-[12px]">{{colheita.valor}}K</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div></div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="flex items-center gap-[14px]">
+            <div class="w-[148px] h-[123px] bg-gray-100 rounded-[12px] p-[21px] text-center">
+                <p class="font-semibold text-[32px]">26</p>
+                <p class="font-medium text-[16px]">Setembro</p>
+                <p class="text-[#8C8C8C] text-[10px]">Terça-feira</p>
+            </div>
+            <div class="w-[280px] h-[123px] bg-gray-100 p-[28px] relative overflow-hidden rounded-[12px]">
+              <div *ngIf="loading" class="flex items-center justify-center h-full">
+                <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-white"></div>
+              </div>
+
+              <div *ngIf="error && !loading" class="flex items-center justify-center h-full">
+                <p class="text-sm">Erro ao carregar clima</p>
+              </div>
+
+              <div *ngIf="weatherData && !loading && !error" class="flex justify-between items-center h-full">
+                <div>
+                  <p class="text-[32px] font-bold">{{weatherData.main.temp | number:'1.0-0'}}°</p>
+                  <p class="text-[16px] opacity-90">{{weatherData.name}}</p>
+                  <p class="text-[10px] opacity-75 capitalize">{{weatherData.weather[0].description}}</p>
+                </div>
+                <div class="flex flex-col items-center">
+                  <img
+                    [src]="getWeatherIcon(weatherData.weather[0].icon)"
+                    [alt]="weatherData.weather[0].description"
+                    class="w-12 h-12"
+                  />
+                  <div class="text-xs text-center opacity-75">
+                    <p>Umidade: {{weatherData.main.humidity}}%</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="w-full mt-[21px] h-full bg-gray-100 rounded-[12px]"></div>
+    </div>
+
+</div>
