@@ -60,12 +60,10 @@ export class HeaderComponent implements OnInit {
   }
 
   onProfileMenuClick() {
-    console.log('Perfil clicked');
     this.profileMenu.hide();
   }
 
   onLogout() {
-    console.log('Logout clicked');
     this.profileMenu.hide();
     this.userService.logout();
   }

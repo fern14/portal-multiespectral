@@ -94,7 +94,8 @@
              [class.px-4]="!isSidebarExpanded"
              [class.ml-[34px]]="isSidebarExpanded"
              [class.justify-center]="!isSidebarExpanded"
-             [class.justify-start]="isSidebarExpanded">
+             [class.justify-start]="isSidebarExpanded"
+             (click)="logout()">
             <img src="../../../assets/imgs/sidebar/exit.svg" alt="Logout" class="w-6 h-6 flex-shrink-0">
             <p class="text-[#B01212] font-normal text-[14px] transition-all duration-300 overflow-hidden whitespace-nowrap"
                [class.opacity-0]="!isSidebarExpanded"

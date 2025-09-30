@@ -99,9 +99,9 @@
     <div>
         <div class="flex items-center gap-[14px]">
             <div class="w-[148px] h-[123px] bg-gray-100 rounded-[12px] p-[21px] text-center">
-                <p class="font-semibold text-[32px]">26</p>
-                <p class="font-medium text-[16px]">Setembro</p>
-                <p class="text-[#8C8C8C] text-[10px]">Terça-feira</p>
+                <p class="font-semibold text-[32px]">{{dateCard.day}}</p>
+                <p class="font-medium text-[16px] capitalize">{{dateCard.month}}</p>
+                <p class="text-[#8C8C8C] text-[10px] capitalize">{{dateCard.dayOfWeek}}</p>
             </div>
             <div class="w-[280px] h-[123px] bg-gray-100 p-[28px] relative overflow-hidden rounded-[12px]">
               <div *ngIf="loading" class="flex items-center justify-center h-full">

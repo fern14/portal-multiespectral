@@ -12,33 +12,35 @@ export class DashboardComponent implements OnInit {
   loading = true;
   error = false;
 
-  // Dados da colheita estimada
   colheitaPercentual = 84;
 
-  // Dados das últimas colheitas
   ultimasColheitas = [
-    { mes: 'Agosto', valor: 120, percentual: 100 }, // 120K é o máximo, então 100%
-    { mes: 'Julho', valor: 90, percentual: 75 },    // 90K/120K = 75%
-    { mes: 'Junho', valor: 80, percentual: 67 },    // 80K/120K ≈ 67%
-    { mes: 'Maio', valor: 70, percentual: 58 }      // 70K/120K ≈ 58%
+    { mes: 'Agosto', valor: 120, percentual: 100 },
+    { mes: 'Julho', valor: 90, percentual: 75 },
+    { mes: 'Junho', valor: 80, percentual: 67 },
+    { mes: 'Maio', valor: 70, percentual: 58 }
   ];
 
-  // Métodos para o arco de progresso
   getArcLength(): number {
-    // Comprimento total do arco semicircular com raio 90 (aproximadamente 282.7)
     return 282.7;
   }
 
   getArcOffset(): number {
-    // Calcula o offset baseado na porcentagem
     const totalLength = this.getArcLength();
     return totalLength - (totalLength * this.colheitaPercentual / 100);
   }
 
-  constructor(private weatherService: WeatherService) {}
+  dateCard: { day: string, month: string, dayOfWeek: string } = { day: '', month: '', dayOfWeek: '' };
+
+  constructor(private weatherService: WeatherService) { }
 
   ngOnInit() {
     this.loadWeatherData();
+    this.dateCard = {
+      day: new Date().getDate().toString(),
+      month: new Date().toLocaleDateString('pt-BR', { month: 'long' }),
+      dayOfWeek: new Date().toLocaleDateString('pt-BR', { weekday: 'long' })
+    };
   }
 
   loadWeatherData() {
