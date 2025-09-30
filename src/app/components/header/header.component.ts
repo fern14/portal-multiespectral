@@ -1,18 +1,20 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, inject, OnInit } from '@angular/core';
 import { OverlayPanel } from 'primeng/overlaypanel';
 import { MenuItem } from 'primeng/api';
+import { UserService } from '../../services/User.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   @ViewChild('profileMenu') profileMenu!: OverlayPanel;
 
+  userService = inject(UserService);
   rangeDates: Date[] | undefined;
-  userName: string = 'Jorge Luiz Maia';
-  userRole: string = 'Admin';
+  userName: string = '';
+  userRole: string = '';
 
   menuItems: MenuItem[] = [
     {
@@ -41,6 +43,18 @@ export class HeaderComponent {
     this.rangeDates = [today, tomorrow];
   }
 
+  ngOnInit(): void {
+    this.userService.$user.subscribe((user) => {
+      if (user) {
+        this.userName = user.nome || '';
+        this.userRole = user.role || '';
+      } else {
+        this.userName = '';
+        this.userRole = '';
+      }
+    });
+  }
+
   onProfileClick(event: Event) {
     this.profileMenu.toggle(event);
   }
@@ -48,12 +62,11 @@ export class HeaderComponent {
   onProfileMenuClick() {
     console.log('Perfil clicked');
     this.profileMenu.hide();
-    // Aqui você pode implementar a navegação para o perfil
   }
 
   onLogout() {
     console.log('Logout clicked');
     this.profileMenu.hide();
-    // Aqui você pode implementar a lógica de logout
+    this.userService.logout();
   }
 }

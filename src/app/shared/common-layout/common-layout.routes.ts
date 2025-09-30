@@ -1,8 +1,10 @@
 import { Routes } from '@angular/router';
+import { AuthGuard } from '../../guards/auth.guard';
 
 export const CommonLayout_ROUTES: Routes = [
     {
         path: 'dashboard',
-        loadChildren: () => import('../../pages/Dashboard/Dashboard.module').then(m => m.DashboardModule)
+        loadChildren: () => import('../../pages/Dashboard/Dashboard.module').then(m => m.DashboardModule),
+        canActivate: [AuthGuard]
     }
 ]

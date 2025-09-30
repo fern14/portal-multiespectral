@@ -94,4 +94,28 @@ export class DashboardComponent implements OnInit {
   getWeatherIcon(iconCode: string): string {
     return `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
   }
+
+  getWeatherIconBackground(iconCode: string): string {
+    const weatherType = iconCode.substring(0, 2);
+
+    switch (weatherType) {
+      case '01':
+        return 'bg-gradient-to-br from-yellow-100 to-orange-200';
+      case '02':
+      case '03':
+      case '04':
+        return 'bg-gradient-to-br from-gray-100 to-blue-200';
+      case '09':
+      case '10':
+        return 'bg-gradient-to-br from-blue-200 to-blue-300';
+      case '11':
+        return 'bg-gradient-to-br from-gray-300 to-gray-400';
+      case '13':
+        return 'bg-gradient-to-br from-blue-50 to-white';
+      case '50':
+        return 'bg-gradient-to-br from-gray-200 to-gray-300';
+      default:
+        return 'bg-gradient-to-br from-blue-100 to-blue-200';
+    }
+  }
 }

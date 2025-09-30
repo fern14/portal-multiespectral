@@ -5,5 +5,13 @@ import { Component } from '@angular/core';
   templateUrl: './common-layout.component.html',
 })
 export class CommonLayoutComponent {
+  isSidebarExpanded = false;
 
+  onSidebarMouseEnter() {
+    this.isSidebarExpanded = true;
+  }
+
+  onSidebarMouseLeave() {
+    this.isSidebarExpanded = false;
+  }
 }

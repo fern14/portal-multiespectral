@@ -3,6 +3,7 @@ import { UserService } from '../../services/User.service';
 import { UserRequest } from '../../models/User.interface';
 import { ToastService } from '../../helpers/toast';
 import { Subject, takeUntil } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -18,6 +19,7 @@ export class LoginComponent implements OnDestroy {
   email = '';
   password = '';
   lembrarSenha = false;
+  router = inject(Router);
 
   login() {
 
@@ -31,7 +33,10 @@ export class LoginComponent implements OnDestroy {
       takeUntil(this.$subject),
     ).subscribe({
       next: (response) => {
-        this.toastService.success('Sucesso', 'Login realizado com sucesso!');
+        if (response.access_token) {
+          this.router.navigate(['/dashboard']);
+          this.toastService.success('Sucesso', 'Login realizado com sucesso!');
+        }
       },
       error: (err) => {
         console.log(err);
