@@ -1,0 +1,16 @@
+::ng-deep .p-accordion .p-accordion-header .p-accordion-header-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+::ng-deep .p-accordion .p-accordion-header .p-accordion-header-link .p-accordion-toggle-icon {
+  order: 2;
+  margin-left: auto;
+  margin-right: 0;
+}
+
+::ng-deep .p-accordion .p-accordion-header .p-accordion-header-link .p-accordion-header-text {
+  order: 1;
+  flex: 1;
+}

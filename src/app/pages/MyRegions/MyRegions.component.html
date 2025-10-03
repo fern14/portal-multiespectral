@@ -1,0 +1,57 @@
+<div class="card m-4">
+    <p-accordion [activeIndex]="0">
+        <p-accordionTab [header]="'Upload de Shapefile'">
+
+            <form [formGroup]="form">
+                <div class="mt-[22px]">
+                    <label class="block text-[#717171] text-[12px]" for="descricao">Descrição</label>
+                    <input
+                        formControlName="descricao"
+                        [class]="'border w-full text-[12px] p-[6px] rounded ' + (form.get('descricao')?.invalid && form.get('descricao')?.touched ? 'border-red-500' : 'border-[#B5B5B5]')"
+                        id="descricao"
+                        pInputText
+                        placeholder="Digite a descrição" />
+                </div>
+
+                <div class="mt-[22px] flex gap-4 w-full">
+                    <div class="w-full">
+                        <label class="block text-[#717171] text-[12px]" for="propriedade">Propriedade</label>
+                        <input
+                            formControlName="propriedade"
+                            [class]="'border flex-1 w-full text-[12px] p-[6px] rounded ' + (form.get('propriedade')?.invalid && form.get('propriedade')?.touched ? 'border-red-500' : 'border-[#B5B5B5]')"
+                            id="propriedade"
+                            pInputText
+                            placeholder="Ex: Propriedade" />
+                    </div>
+                    <div class="w-full">
+                        <label class="block text-[#717171] text-[12px]" for="talhao">Talhão</label>
+                        <input
+                            formControlName="talhao"
+                            [class]="'border flex-1 w-full text-[12px] p-[6px] rounded ' + (form.get('talhao')?.invalid && form.get('talhao')?.touched ? 'border-red-500' : 'border-[#B5B5B5]')"
+                            id="talhao"
+                            pInputText
+                            placeholder="Ex: Talhão" />
+                    </div>
+                    <div class="w-full">
+                        <label class="block text-[#717171] text-[12px]" for="arquivo">Arquivo shapefile</label>
+                        <input
+                            formControlName="arquivo"
+                            type="file"
+                            [class]="'flex-1 w-full text-[12px] p-[6px] rounded border ' + (form.get('arquivo')?.invalid && form.get('arquivo')?.touched ? 'border-red-500' : 'border-[#B5B5B5]')"
+                            id="arquivo"
+                            accept=".shp,.zip" />
+                    </div>
+                </div>
+            </form>
+
+            <div class="mt-[22px] flex items-center gap-[12px] justify-end">
+                <div (click)="limparFormulario()" class="w-[150px] h-[40px] bg-[#ffffff] text-[#FF5F57] border-[1.5px] border-[#FF5F57] text-center flex justify-center items-center rounded-[6px] cursor-pointer">
+                    Limpar
+                </div>
+                <div (click)="enviarShapefile()" class="w-[150px] h-[40px] bg-[#5F964B] text-white text-center flex justify-center items-center rounded-[6px] cursor-pointer">
+                    Enviar shapefile
+                </div>
+            </div>
+        </p-accordionTab>
+    </p-accordion>
+</div>
